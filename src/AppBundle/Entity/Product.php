@@ -31,7 +31,7 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="price", type="decimal", precision=2, scale=2)
+     * @ORM\Column(name="price", type="decimal", precision=5, scale=2)
      */
     private $price;
 
@@ -76,13 +76,6 @@ class Product
      * @ORM\Column(name="brand", type="string", length=255)
      */
     private $brand;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="customer_reviews", type="text")
-     */
-    private $customerReviews;
 
 
     /**
@@ -285,29 +278,5 @@ class Product
     public function getBrand()
     {
         return $this->brand;
-    }
-
-    /**
-     * Set customerReviews
-     *
-     * @param string $customerReviews
-     *
-     * @return Product
-     */
-    public function setCustomerReviews($customerReviews)
-    {
-        $this->customer_reviews = $customerReviews;
-
-        return $this;
-    }
-
-    /**
-     * Get customerReviews
-     *
-     * @return string
-     */
-    public function getCustomerReviews()
-    {
-        return $this->customerReviews;
     }
 }
