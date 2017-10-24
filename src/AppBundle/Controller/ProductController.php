@@ -32,7 +32,7 @@ class ProductController extends Controller
      */
     public function listAction()
     {
-    $products = $this->getDoctrine()->getRepository('AppBundle\Entity\Product')->findAll();
-    return $products;
+        $products = $this->getDoctrine()->getRepository('AppBundle\Entity\Product')->findAll();
+        return $products;
     }
 }

@@ -2,23 +2,24 @@
 
 namespace AppBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use FOS\RestBundle\Controller\Annotations\Get;
-use FOS\RestBundle\Controller\Annotations\Post;
-use FOS\RestBundle\Controller\Annotations\View;
+use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Controller\Annotations as Rest;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\User;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-class UserController extends Controller
+class UserController extends FOSRestController
 {
 
     /**
-     * @Get(
+     * @Rest\Get(
      *     path = "/users/{id}",
      *     name = "app_user_show",
      *     requirements = {"id"="\d+"}
      * )
-     * @View
+     * @Rest\View
      */
     public function showAction(User $user)
     {
@@ -26,27 +27,40 @@ class UserController extends Controller
     }
 
     /**
-     * @Post(
-     *     path = "/users/",
+     * @Rest\Post(
+     *     path = "/users",
      *     name = "app_user_create"
      * )
-     * @View
+     * @Rest\View(StatusCode=201)
+     * @ParamConverter("user", converter="fos_rest.request_body")
      */
     public function createAction(User $user)
     {
-        return $user;
+        $em = $this->getDoctrine()->getManager();
+        $user->setEnabled(true);
+        $em->persist($user);
+        $em->flush();
+
+        return $this->view(
+            $user,
+            Response::HTTP_CREATED,
+            [
+                'Location' => $this->generateUrl('app_user_show', ['id' => $user->getId(), UrlGeneratorInterface::ABSOLUTE_URL])
+            ]
+        );
     }
 
     /**
-     * @Get(
+     * @Rest\Get(
      *     path = "/users/",
      *     name = "app_user_list"
      * )
-     * @View
+     * @Rest\View
      */
     public function listAction()
     {
         $users = $this->getDoctrine()->getRepository('AppBundle\Entity\User')->findAll();
         return $users;
     }
+
 }
