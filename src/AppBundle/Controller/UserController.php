@@ -47,7 +47,6 @@ class UserController extends FOSRestController
             throw new ResourceValidationException($message);
         }
 
-
         $em = $this->getDoctrine()->getManager();
         $user->setEnabled(true);
         $em->persist($user);
