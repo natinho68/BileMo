@@ -10,6 +10,7 @@ use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\User;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use AppBundle\Exception\ResourceValidationException;
 
 class UserController extends FOSRestController
 {
@@ -38,8 +39,14 @@ class UserController extends FOSRestController
     public function createAction(User $user, ConstraintViolationList $violations)
     {
         if (count($violations)) {
-            return $this->view($violations, Response::HTTP_BAD_REQUEST);
+            $message = 'The JSON sent contains invalid data. Here are the errors you need to correct: ';
+            foreach ($violations as $violation) {
+                $message .= sprintf("Field %s: %s ", $violation->getPropertyPath(), $violation->getMessage());
+            }
+
+            throw new ResourceValidationException($message);
         }
+
 
         $em = $this->getDoctrine()->getManager();
         $user->setEnabled(true);
