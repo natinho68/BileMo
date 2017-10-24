@@ -78,6 +78,7 @@ class Product
     private $brand;
 
 
+
     /**
      * Get id
      *
