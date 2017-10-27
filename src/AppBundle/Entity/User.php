@@ -2,83 +2,50 @@
 
 namespace AppBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
-use JMS\Serializer\Annotation as Serializer;
-use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="user")
- * @Serializer\ExclusionPolicy("ALL")
- */
-class User extends BaseUser
+class User implements UserInterface
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
 
-    /**
-     * @Assert\Length(min=4)
-     * @Assert\NotNull()
-     * @Serializer\Expose
-     */
-    protected $username;
+    private $name;
+    private $id;
 
-    /**
-    * @Assert\Length(
-    *     min=8,
-    *     max=15,
-    * )
-    * @Assert\NotNull()
-    */
-    protected $plainPassword;
-
-    /**
-     * @Assert\Email(
-     *     message = "The email '{{ value }}' is not a valid email.",
-     *     checkMX = true
-     * )
-     * @Assert\NotNull()
-     * @Serializer\Expose
-     */
-    protected $email;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $facebookID;
-
-    public function __construct()
+    public function __construct($name, $id)
     {
-        parent::__construct();
-        // your own logic
+        $this->name = $name;
+        $this->id = $id;
     }
 
-    /**
-     * Set facebookID
-     *
-     * @param string $facebookID
-     *
-     * @return User
-     */
-    public function setFacebookID($facebookID)
+    public function getName()
     {
-        $this->facebookID = $facebookID;
-
-        return $this;
+        return $this->name;
     }
 
-    /**
-     * Get facebookID
-     *
-     * @return string
-     */
-    public function getFacebookID()
+    public function getUsername()
     {
-        return $this->facebookID;
+        return $this->name;
+    }
+
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getRoles()
+    {
+        return ['ROLE_USER'];
+    }
+
+    public function getPassword()
+    {
+    }
+
+    public function getSalt()
+    {
+    }
+
+    public function eraseCredentials()
+    {
     }
 }

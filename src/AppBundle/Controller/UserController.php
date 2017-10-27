@@ -15,6 +15,28 @@ use AppBundle\Exception\ResourceValidationException;
 class UserController extends FOSRestController
 {
 
+
+    public function authentification()
+    {
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request('GET', 'https://graph.facebook.com/me?fields=id,name', [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Authorization'     => 'Bearer secret'
+            ]
+        ]);
+        $ok = $res->getStatusCode();
+        if($ok != 200){
+            echo $res->getReasonPhrase();
+        } else {
+            return true;
+        }
+
+// 200
+// 'application/json; charset=utf8'
+// '{"id": 1420053, "name": "guzzle", ...}'
+    }
+
     /**
      * @Rest\Get(
      *     path = "/users/{id}",
@@ -70,6 +92,7 @@ class UserController extends FOSRestController
      */
     public function listAction()
     {
+        $this->authentification();
         $users = $this->getDoctrine()->getRepository('AppBundle\Entity\User')->findAll();
         return $users;
     }

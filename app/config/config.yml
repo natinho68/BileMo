@@ -70,15 +70,6 @@ swiftmailer:
     spool: { type: memory }
 
 
-fos_user:
-    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
-    firewall_name: main
-    user_class: AppBundle\Entity\User
-    from_email:
-        address: "test@test.com"
-        sender_name: "test@test.com"
-
-
 fos_rest:
     param_fetcher_listener: force
     body_converter:
@@ -102,3 +93,10 @@ fos_rest:
 sensio_framework_extra:
     request: { converters: true }
     view: { annotations: true }
+
+
+csa_guzzle:
+    clients:
+        facebook_api:
+            config:
+                base_url: https://graph.facebook.com
