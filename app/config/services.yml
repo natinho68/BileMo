@@ -33,3 +33,10 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+    facebook_authenticator:
+        class: AppBundle\Security\FacebookAuthenticator
+
+    facebook_user_provider:
+        class: AppBundle\Security\FacebookUserProvider
+        arguments: ["@csa_guzzle.client.facebook_api", "@jms_serializer"]
