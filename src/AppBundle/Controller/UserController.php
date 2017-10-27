@@ -69,7 +69,6 @@ class UserController extends FOSRestController
      */
     public function listAction()
     {
-        $this->authentification();
         $users = $this->getDoctrine()->getRepository('AppBundle\Entity\User')->findAll();
         return $users;
     }
