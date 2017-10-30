@@ -8,6 +8,10 @@ security:
             id: facebook_user_provider
 
     firewalls:
+        api_doc:
+            pattern: ^/api/doc
+            security: false
+
         secured_area:
             pattern: ^/
             stateless: true
