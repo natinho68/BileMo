@@ -31,7 +31,7 @@ use Hateoas\Configuration\Annotation as Hateoas;
  *          absolute = true
  *      )
  * )
- * 
+ *
  */
 
 

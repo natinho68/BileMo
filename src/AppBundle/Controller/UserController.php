@@ -6,6 +6,7 @@ use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
+use Nelmio\ApiDocBundle\Annotation as Doc;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\User;
@@ -21,6 +22,34 @@ class UserController extends FOSRestController
      *     requirements = {"id"="\d+"}
      * )
      * @Rest\View
+     *
+     * @Doc\ApiDoc(
+     *     section="Users",
+     *     resource=true,
+     *     description="Get details of a particular user",
+     *     headers={
+     *         {
+     *             "name"="Authorization",
+     *             "description"="Facebook Token Access",
+     *             "required"="true"
+     *
+     *         }
+     *     }
+     *     )
+     *     statusCodes={
+     *         200="Returned when request was accepted successfully",
+     *         400="Returned when a violation is raised by validation"
+     *     }
+     * )
+     *     requirements={
+     *         {
+     *             "name"="id",
+     *             "dataType"="integer",
+     *             "requirements"="\d+",
+     *             "description"="The user unique identifier."
+     *         }
+     * )
+     *
      */
     public function showAction(User $user)
     {
@@ -34,6 +63,27 @@ class UserController extends FOSRestController
      * )
      * @Rest\View(StatusCode=201)
      * @ParamConverter("user", converter="fos_rest.request_body")
+     *
+     *
+     *      * @Doc\ApiDoc(
+     *     section="Users",
+     *     resource=true,
+     *     description="Create an user",
+     *     headers={
+     *         {
+     *             "name"="Authorization",
+     *             "description"="Facebook Token Access",
+     *             "required"="true"
+     *
+     *         }
+     *     }
+     *     )
+     *     statusCodes={
+     *         201="Returned when created",
+     *         400="Returned when a violation is raised by validation"
+     *     }
+     * )
+     * )
      */
     public function createAction(User $user, ConstraintViolationList $violations)
     {
@@ -66,6 +116,26 @@ class UserController extends FOSRestController
      *     name = "app_user_list"
      * )
      * @Rest\View
+     *
+     * @Doc\ApiDoc(
+     *     section="Users",
+     *     resource=true,
+     *     description="Get the list of all users",
+     *     headers={
+     *         {
+     *             "name"="Authorization",
+     *             "description"="Facebook Token Access",
+     *             "required"="true"
+     *
+     *         }
+     *     }
+     *     )
+     *     statusCodes={
+     *         200="Returned when request was accepted successfully",
+     *         400="Returned when a violation is raised by validation"
+     *     }
+     *     )
+     * )
      */
     public function listAction()
     {
