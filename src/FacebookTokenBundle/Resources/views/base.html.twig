@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock title %} BileMo FrontApp</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+<style>
+    body {
+        padding-top: 5rem;
+        margin:10px;
+    }
+    .starter-template {
+        padding: 3rem 1.5rem;
+        text-align: center;
+    }
+    .btn-fb {
+        border: none;
+        background: #4367b1;
+    }
+
+    .fa-power-off{
+        color: #FFFFFF;
+    }
+
+
+    .btn-fb:hover{
+        background-color:#4367b1 !important;
+    }
+
+    .btn-fb:active{
+        background-color:#4367b1 !important;
+    }
+
+    .btn-fb:focus{
+        background-color:#4367b1 !important;
+    }
+</style>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="{{ path('homepage') }}">BileMo FrontApp</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li>
+                <a class="btn btn-primary btn-fb" role="button" href="{{ hwi_oauth_login_url('facebook') }}"><i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i> Get my API access token <span class="sr-only"></span></a>
+            </li>
+            <li>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <a class="nav-link log-out" href="{{ path('fos_user_security_logout') }}">
+                    <i class="fa fa-power-off fa-2x" aria-hidden="true"></i>
+                </a>
+                {% endif %}
+            </li>
+        </ul>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <ul class="nav navbar-nav navbar-right dropdown">
+            <li><a class="nav-link" href="{{ path('fos_user_profile_show') }}">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a>
+            </li>
+        </ul>
+        {% endif %}
+    </div>
+</nav>
+{% block body %}
+{% endblock body %}
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://use.fontawesome.com/0260e179e3.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '134073260679567',
+            xfbml      : true,
+            version    : 'v2.10'
+        });
+        FB.AppEvents.logPageView();
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+</body>
+</html>

@@ -30,7 +30,15 @@ use JMS\Serializer\Annotation as Serializer;
  *      )
  * )
  *
+ *
+ * @Hateoas\Relation(
+ *     "authenticated_user",
+ *     embedded = @Hateoas\Embedded("expr(service('security.token_storage').getToken().getUser())")
+ * )
  */
+
+
+
 class Product
 {
     /**

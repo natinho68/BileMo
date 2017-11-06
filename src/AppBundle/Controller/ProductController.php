@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     /**
      * @Get(
-     *     path = "/products/{id}",
+     *     path = "/api/products/{id}",
      *     name = "app_product_show",
      *     requirements = {"id"="\d+"}
      * )
@@ -54,7 +54,7 @@ class ProductController extends Controller
 
     /**
      * @Get(
-     *     path = "/products/",
+     *     path = "/api/products/",
      *     name = "app_product_list"
      * )
      * @View
