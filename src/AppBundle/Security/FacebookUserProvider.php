@@ -19,22 +19,19 @@ class FacebookUserProvider implements UserProviderInterface
         $this->serializer = $serializer;
     }
 
-    public function loadUserByUsername($accessToken)
+    public function loadUserByUsername($username)
     {
-        $response = $this->client->request('GET', 'https://graph.facebook.com/me?fields=id,name,gender,link,picture,email', [
-            'headers' => [
-                'Authorization' => $accessToken
-            ]
-        ]);
+        $url = 'https://graph.facebook.com/me?access_token='.$username;
 
+        $response = $this->client->get($url);
         $res = $response->getBody()->getContents();
         $userData = $this->serializer->deserialize($res, 'array', 'json');
 
         if (!$userData) {
-            throw new \LogicException('Did not managed to get your user info from Facebook.');
+            throw new \LogicException('Did not managed to get your user info from Github.');
         }
 
-        return new User($userData['name'], $userData['id']);
+        return new User($userData['login'], $userData['name'], $userData['email'], $userData['avatar_url'], $userData['html_url']);
     }
 
     public function refreshUser(UserInterface $user)

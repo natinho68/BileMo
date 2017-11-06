@@ -1,0 +1,18 @@
+{% extends 'FacebookTokenBundle::base.html.twig' %}
+
+{% block body %}
+    <main role="main" class="container">
+
+        <div class="starter-template">
+            <h1>BileMo FrontApp</h1>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <p>Your access token is :</p>
+                <p class="bg-success">Bearer {{ (app.token.accessToken) }}</p>
+            {% else %}
+            <p class="lead">Please, click on <a href="{{ hwi_oauth_login_url('facebook') }}"><b>Get my API access token</b></a>, to get a token for all your requests on the BileMo API</p>
+            <p><i>You need a Facebook account to get your api token</i></p>
+            {% endif %}
+        </div>
+
+    </main><!-- /.container -->
+{% endblock %}
