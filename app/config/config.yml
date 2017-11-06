@@ -70,22 +70,27 @@ swiftmailer:
     spool: { type: memory }
 
 
-fos_user:
-    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
-    firewall_name: main
-    user_class: AppBundle\Entity\User
-    from_email:
-        address: "test@test.com"
-        sender_name: "test@test.com"
-
-
 fos_rest:
     param_fetcher_listener: force
     body_converter:
         enabled: true
+        validate: true
+        validation_errors_argument: violations
+    exception:
+        enabled: true
+        codes:
+           { AppBundle\Exception\ResourceValidationException: 400, \Exception: 500}
+    versioning:
+        enabled: true
+        resolvers:
+            media_type: # Accept header
+                enabled: true
+                regex: '/(v|version)=(?P<version>[0-9\.]+)/'
     view:
         formats: { json: true, xml: false, rss: false }
         view_response_listener: true
+        mime_types:
+            json: ['application/json', 'application/json;version=1.0']
     serializer:
         serialize_null: true
     format_listener:
@@ -96,3 +101,12 @@ fos_rest:
 sensio_framework_extra:
     request: { converters: true }
     view: { annotations: true }
+
+
+csa_guzzle:
+    clients:
+        facebook_api:
+            config:
+                base_url: https://graph.facebook.com
+
+nelmio_api_doc: ~

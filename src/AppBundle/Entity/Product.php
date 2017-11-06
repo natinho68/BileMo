@@ -3,12 +3,33 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Hateoas\Configuration\Annotation as Hateoas;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Product
  *
  * @ORM\Table(name="product")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductRepository")
+ *
+ *
+ * @Hateoas\Relation(
+ *      "self",
+ *      href = @Hateoas\Route(
+ *          "app_product_show",
+ *          parameters = { "id" = "expr(object.getId())" },
+ *          absolute = true
+ *      )
+ * )
+ *
+ * @Hateoas\Relation(
+ *      "list_products",
+ *      href = @Hateoas\Route(
+ *          "app_product_list",
+ *          absolute = true
+ *      )
+ * )
+ *
  */
 class Product
 {
@@ -18,6 +39,8 @@ class Product
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @Serializer\Since("1.0")
      */
     private $id;
 
@@ -25,6 +48,8 @@ class Product
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true)
+     *
+     * @Serializer\Since("1.0")
      */
     private $name;
 
@@ -32,6 +57,8 @@ class Product
      * @var string
      *
      * @ORM\Column(name="price", type="decimal", precision=5, scale=2)
+     *
+     * @Serializer\Since("1.0")
      */
     private $price;
 
@@ -39,6 +66,8 @@ class Product
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     *
+     * @Serializer\Since("1.0")
      */
     private $description;
 
@@ -46,6 +75,8 @@ class Product
      * @var int
      *
      * @ORM\Column(name="quantity_available", type="integer")
+     *
+     * @Serializer\Since("1.0")
      */
     private $quantityAvailable;
 
@@ -53,6 +84,8 @@ class Product
      * @var string
      *
      * @ORM\Column(name="os", type="string", length=255)
+     *
+     * @Serializer\Since("1.0")
      */
     private $os;
 
@@ -60,6 +93,8 @@ class Product
      * @var string
      *
      * @ORM\Column(name="color", type="string", length=255)
+     *
+     * @Serializer\Since("1.0")
      */
     private $color;
 
@@ -67,6 +102,8 @@ class Product
      * @var string
      *
      * @ORM\Column(name="technical_sheet", type="text")
+     *
+     * @Serializer\Since("1.0")
      */
     private $technicalSheet;
 
@@ -74,8 +111,11 @@ class Product
      * @var string
      *
      * @ORM\Column(name="brand", type="string", length=255)
+     *
+     * @Serializer\Since("1.0")
      */
     private $brand;
+
 
 
     /**
