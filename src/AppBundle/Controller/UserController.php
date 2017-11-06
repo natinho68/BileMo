@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Nelmio\ApiDocBundle\Annotation as Doc;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\HttpFoundation\Response;
-use AppBundle\Entity\User;
+use FacebookTokenBundle\Entity\User;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use AppBundle\Exception\ResourceValidationException;
 
@@ -17,7 +17,7 @@ class UserController extends FOSRestController
 {
     /**
      * @Rest\Get(
-     *     path = "/users/{id}",
+     *     path = "api/users/{id}",
      *     name = "app_user_show",
      *     requirements = {"id"="\d+"}
      * )
@@ -58,7 +58,7 @@ class UserController extends FOSRestController
 
     /**
      * @Rest\Post(
-     *     path = "/users",
+     *     path = "/api/users",
      *     name = "app_user_create"
      * )
      * @Rest\View(StatusCode=201)
@@ -112,7 +112,7 @@ class UserController extends FOSRestController
 
     /**
      * @Rest\Get(
-     *     path = "/users/",
+     *     path = "/api/users/",
      *     name = "app_user_list"
      * )
      * @Rest\View
@@ -139,7 +139,7 @@ class UserController extends FOSRestController
      */
     public function listAction()
     {
-        $users = $this->getDoctrine()->getRepository('AppBundle\Entity\User')->findAll();
+        $users = $this->getDoctrine()->getRepository('FacebookTokenBundle\Entity\User')->findAll();
         return $users;
     }
 
