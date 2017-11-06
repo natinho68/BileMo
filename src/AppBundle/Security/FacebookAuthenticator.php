@@ -1,51 +1,91 @@
 <?php
 
+// src/AppBundle/Security/TokenAuthenticator.php
 namespace AppBundle\Security;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\User\UserProviderInterface;
-use Symfony\Component\Security\Core\Authentication\Token\PreAuthenticatedToken;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use Symfony\Component\Security\Http\Authentication\AuthenticationFailureHandlerInterface;
-use Symfony\Component\Security\Http\Authentication\SimplePreAuthenticatorInterface;
+use Symfony\Component\Security\Core\User\UserProviderInterface;
 
-class FacebookAuthenticator implements SimplePreAuthenticatorInterface, AuthenticationFailureHandlerInterface
+class FacebookAuthenticator extends AbstractGuardAuthenticator
 {
-    public function createToken(Request $request, $providerKey)
+    /**
+     * Called on every request. Return whatever credentials you want to
+     * be passed to getUser(). Returning null will cause this authenticator
+     * to be skipped.
+     */
+    public function getCredentials(Request $request)
     {
-        $bearer = $request->headers->get('Authorization');
-        $accessToken = $bearer;
+        if (!$token = $request->headers->get('Authorization')) {
+            // No token?
+            $token = null;
+        }
 
-        return new PreAuthenticatedToken(
-            'anon.',
-            $accessToken,
-            $providerKey
+        // What you return here will be passed to getUser() as $credentials
+        return array(
+            'token' => $token,
         );
     }
 
-    public function authenticateToken(TokenInterface $token, UserProviderInterface $userProvider, $providerKey)
+    public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        $accessToken = $token->getCredentials();
+        $apiKey = $credentials['token'];
 
-        $user = $userProvider->loadUserByUsername($accessToken);
+        if (null === $apiKey) {
+            return;
+        }
 
-        return new PreAuthenticatedToken(
-            $user,
-            $accessToken,
-            $providerKey,
-            ['ROLE_USER']
-        );
+        // if a User object, checkCredentials() is called
+        return $userProvider->loadUserByUsername($apiKey);
     }
 
-    public function supportsToken(TokenInterface $token, $providerKey)
+    public function checkCredentials($credentials, UserInterface $user)
     {
-        return $token instanceof PreAuthenticatedToken && $token->getProviderKey() === $providerKey;
+        // check credentials - e.g. make sure the password is valid
+        // no credential check is needed in this case
+
+        // return true to cause authentication success
+        return true;
+    }
+
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
+    {
+        // on success, let the request continue
+        return null;
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
-        return new Response("Authentication Failed :(", 401);
+        $data = array(
+            'message' => strtr($exception->getMessageKey(), $exception->getMessageData())
+
+            // or to translate this message
+            // $this->translator->trans($exception->getMessageKey(), $exception->getMessageData())
+        );
+
+        return new JsonResponse($data, Response::HTTP_FORBIDDEN);
+    }
+
+    /**
+     * Called when authentication is needed, but it's not sent
+     */
+    public function start(Request $request, AuthenticationException $authException = null)
+    {
+        $data = array(
+            // you might translate this message
+            'message' => 'Authentication Required'
+        );
+
+        return new JsonResponse($data, Response::HTTP_UNAUTHORIZED);
+    }
+
+    public function supportsRememberMe()
+    {
+        return false;
     }
 }

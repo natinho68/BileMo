@@ -23,10 +23,14 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new Http\HttplugBundle\HttplugBundle(), // If you require the php-http/httplug-bundle package.
+            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
+            new FacebookTokenBundle\FacebookTokenBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
