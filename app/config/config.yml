@@ -144,3 +144,4 @@ hwi_oauth:
                 last_name:      last_name
                 link:           link
                 profilepicture: picture.data.url
+                id: id
