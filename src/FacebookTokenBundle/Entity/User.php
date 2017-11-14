@@ -18,6 +18,7 @@ class User extends BaseUser implements UserInterface
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
     /**
      * @ORM\Column(name="facebook_id",type="text",  nullable=true)
      */
