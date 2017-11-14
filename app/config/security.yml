@@ -18,10 +18,11 @@ security:
     firewalls:
         api:
             pattern: ^/api
+            anonymous: false
+            stateless: true
             guard:
                 authenticators:
                     - AppBundle\Security\FacebookAuthenticator
-            stateless: true
 
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
@@ -64,5 +65,5 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
-        - { path: ^/api/, role: ROLE_USER }
+        - { path: ^/api, role: ROLE_USER }
 
