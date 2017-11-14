@@ -10,10 +10,29 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 class FacebookAuthenticator extends AbstractGuardAuthenticator
 {
+    public function __construct(EntityManager $em)
+    {
+        $this->em = $em;
+    }
+
+    /**
+     * Called when authentication is needed, but it's not sent
+     */
+    public function start(Request $request, AuthenticationException $authException = null)
+    {
+        $data = array(
+            // you might translate this message
+            'message' => 'Authentication Required'
+        );
+
+        return new JsonResponse($data, Response::HTTP_UNAUTHORIZED);
+    }
     /**
      * Called on every request. Return whatever credentials you want to
      * be passed to getUser(). Returning null will cause this authenticator
@@ -34,23 +53,17 @@ class FacebookAuthenticator extends AbstractGuardAuthenticator
 
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        $apiKey = $credentials['token'];
-
-        if (null === $apiKey) {
-            return;
-        }
-
-        // if a User object, checkCredentials() is called
-        return $userProvider->loadUserByUsername($apiKey);
+        $user = $this->em->getRepository('FacebookTokenBundle:User')
+            ->findOneBy(array('facebook_access_token' => $credentials));
+        return $user;
     }
 
     public function checkCredentials($credentials, UserInterface $user)
     {
-        // check credentials - e.g. make sure the password is valid
-        // no credential check is needed in this case
-
-        // return true to cause authentication success
-        return true;
+        if ($user->getFacebookAccessToken() === $credentials['token']) {
+            return true;
+        }
+        return new JsonResponse(array('message' => 'The facebook access token is wrong!', Response::HTTP_FORBIDDEN));
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
@@ -61,27 +74,7 @@ class FacebookAuthenticator extends AbstractGuardAuthenticator
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
-        $data = array(
-            'message' => strtr($exception->getMessageKey(), $exception->getMessageData())
-
-            // or to translate this message
-            // $this->translator->trans($exception->getMessageKey(), $exception->getMessageData())
-        );
-
-        return new JsonResponse($data, Response::HTTP_FORBIDDEN);
-    }
-
-    /**
-     * Called when authentication is needed, but it's not sent
-     */
-    public function start(Request $request, AuthenticationException $authException = null)
-    {
-        $data = array(
-            // you might translate this message
-            'message' => 'Authentication Required'
-        );
-
-        return new JsonResponse($data, Response::HTTP_UNAUTHORIZED);
+        return new JsonResponse(array('message' => $exception->getMessageKey()), Response::HTTP_FORBIDDEN);
     }
 
     public function supportsRememberMe()
