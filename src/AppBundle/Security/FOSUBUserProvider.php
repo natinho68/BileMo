@@ -40,8 +40,6 @@ class FOSUBUserProvider extends BaseClass
         $firstname = $response->getFirstName();
         $lastname = $response->getLastName();
         $data = $response->getResponse();
-        var_dump($data);
-        die();
 
         $user = $this->userManager->findUserBy(array($this->getProperty($response) => $username));
         //when the user is registrating
