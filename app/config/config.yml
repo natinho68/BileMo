@@ -72,6 +72,14 @@ swiftmailer:
     password: '%mailer_password%'
     spool: { type: memory }
 
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: main
+    user_class: FacebookTokenBundle\Entity\User
+    from_email:
+        address: contact@bilemo.com
+        sender_name: BileMo
+
 fos_rest:
     param_fetcher_listener: force
     body_converter:
@@ -116,14 +124,6 @@ csa_guzzle:
 
 nelmio_api_doc: ~
 
-fos_user:
-    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
-    firewall_name: main
-    user_class: FacebookTokenBundle\Entity\User
-    from_email:
-        address: contact@bilemo.com
-        sender_name: BileMo
-
 hwi_oauth:
     connect:
         account_connector: my_user_provider
@@ -146,3 +146,10 @@ hwi_oauth:
                 last_name:      last_name
                 link:           link
                 profilepicture: picture.data.url
+
+jms_serializer:
+    metadata:
+        directories:
+            FOSUserBundle:
+                path: "%kernel.root_dir%/Resources/FOSUserBundle/serializer"
+                namespace_prefix: "FOS\\UserBundle"
