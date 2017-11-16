@@ -4,11 +4,19 @@ namespace FacebookTokenBundle\Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 use FOS\UserBundle\Model\User as BaseUser;
+use JMS\Serializer\Annotation\Expose;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\ExclusionPolicy;
 
 /**
+ *
+ * @ExclusionPolicy("all")
+ *
+ *
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
+
  */
 class User extends BaseUser implements UserInterface
 {
@@ -20,24 +28,34 @@ class User extends BaseUser implements UserInterface
     protected $id;
 
     /**
+     * @Expose
      * @ORM\Column(name="facebook_id",type="text",  nullable=true)
      */
     protected $facebookID;
 
-
     /** @ORM\Column(name="facebook_access_token", type="text", nullable=true) */
     protected $facebook_access_token;
 
-    /** @ORM\Column(name="first_name", type="string", length=255, nullable=true) */
+    /**
+     * @Expose
+     * @ORM\Column(name="first_name", type="string", length=255, nullable=true)
+     *
+     */
     protected $firstName;
 
-    /** @ORM\Column(name="last_name", type="string", length=255, nullable=true) */
+    /**
+     * @Expose
+     * @ORM\Column(name="last_name", type="string", length=255, nullable=true) */
     protected $lastName;
 
-    /** @ORM\Column(name="picture", type="string", length=255, nullable=true) */
+    /**
+     * @Expose
+     * @ORM\Column(name="picture", type="string", length=255, nullable=true) */
     protected $picture;
 
-    /** @ORM\Column(name="link", type="string", length=255, nullable=true) */
+    /**
+     * @Expose
+     * @ORM\Column(name="link", type="string", length=255, nullable=true) */
     protected $link;
 
 
