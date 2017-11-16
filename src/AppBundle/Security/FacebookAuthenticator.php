@@ -26,7 +26,7 @@ class FacebookAuthenticator extends AbstractGuardAuthenticator
     {
         $data = array(
             // you might translate this message
-            'message' => 'Authentication Required'
+            'message' => 'Authentication Required. If you sent an authorization header with your access token, please recheck it.'
         );
 
         return new JsonResponse($data, Response::HTTP_UNAUTHORIZED);
