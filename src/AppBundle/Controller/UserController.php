@@ -34,13 +34,13 @@ class UserController extends FOSRestController
      *             "required"="true"
      *
      *         }
-     *     }
-     *     )
+     *     },
+     *
      *     statusCodes={
      *         200="Returned when request was accepted successfully",
      *         400="Returned when a violation is raised by validation"
-     *     }
-     * )
+     *     },
+     *
      *     requirements={
      *         {
      *             "name"="id",
@@ -48,6 +48,7 @@ class UserController extends FOSRestController
      *             "requirements"="\d+",
      *             "description"="The user unique identifier."
      *         }
+     *     }
      * )
      *
      */
@@ -65,7 +66,7 @@ class UserController extends FOSRestController
      * @ParamConverter("user", converter="fos_rest.request_body")
      *
      *
-     *      * @Doc\ApiDoc(
+     *     @Doc\ApiDoc(
      *     section="Users",
      *     resource=true,
      *     description="Create an user",
@@ -76,13 +77,14 @@ class UserController extends FOSRestController
      *             "required"="true"
      *
      *         }
-     *     }
-     *     )
+     *     },
+     *
      *     statusCodes={
      *         201="Returned when created",
      *         400="Returned when a violation is raised by validation"
      *     }
-     * )
+     *
+     *
      * )
      */
     public function createAction(User $user)
@@ -120,13 +122,13 @@ class UserController extends FOSRestController
      *             "required"="true"
      *
      *         }
-     *     }
-     *     )
+     *     },
+     *
      *     statusCodes={
      *         200="Returned when request was accepted successfully",
      *         400="Returned when a violation is raised by validation"
      *     }
-     *     )
+     *
      * )
      */
     public function listAction()

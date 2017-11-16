@@ -30,13 +30,13 @@ class ProductController extends Controller
      *             "required"="true"
      *
      *         }
-     *     }
-     *     )
+     *     },
+     *
      *     statusCodes={
      *         200="Returned when request was accepted successfully",
      *         400="Returned when a violation is raised by validation"
-     *     }
-     * )
+     *     },
+     *
      *     requirements={
      *         {
      *             "name"="id",
@@ -70,13 +70,13 @@ class ProductController extends Controller
      *             "required"="true"
      *
      *         }
-     *     }
-     *     )
+     *     },
+     *
      *     statusCodes={
      *         200="Returned when request was accepted successfully",
      *         400="Returned when a violation is raised by validation"
      *     }
-     * )
+     *
      * )
      */
     public function listAction()
