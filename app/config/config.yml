@@ -81,7 +81,9 @@ fos_rest:
     exception:
         enabled: true
         codes:
-           { AppBundle\Exception\ResourceValidationException: 400, \Exception: 500}
+           { AppBundle\Exception\ResourceValidationException: 400, \Exception: 500 }
+        messages:
+           { AppBundle\Exception\ResourceValidationException: true}
     versioning:
         enabled: true
         resolvers:
@@ -144,4 +146,3 @@ hwi_oauth:
                 last_name:      last_name
                 link:           link
                 profilepicture: picture.data.url
-                id: id
