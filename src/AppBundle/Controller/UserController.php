@@ -116,6 +116,7 @@ class UserController extends FOSRestController
         $password = $user->setPlainPassword($user->getPassword());
         $salty = $user->setSalt($password);
         $user->setPassword($salty);
+        $user->addRole('ROLE_USER');
         $em->persist($user);
         $em->flush();
 
