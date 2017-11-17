@@ -26,8 +26,14 @@ class FOSUBUserProvider extends BaseClass
             $this->userManager->updateUser($previousUser);
         }
         //we connect current user
+        $data = $response->getResponse();
         $user->$setter_id($username);
         $user->$setter_token($response->getAccessToken());
+        $user->setFirstName($response->getFirstName());
+        $user->setLastName($response->getLastName());
+        $user->setLink($data['link']);
+        $user->setPicture($response->getProfilePicture());
+        $user->addRole('ROLE_USER');
         $this->userManager->updateUser($user);
     }
     /**
@@ -62,6 +68,7 @@ class FOSUBUserProvider extends BaseClass
             $user->setPicture($response->getProfilePicture());
             $user->setPlainPassword($username);
             $user->setEnabled(true);
+            $user->addRole('ROLE_USER');
             $this->userManager->updateUser($user);
             return $user;
         }

@@ -35,7 +35,7 @@ class User extends BaseUser implements UserInterface
     protected $facebookID;
 
     /** @ORM\Column(name="facebook_access_token", type="text", nullable=true) */
-    protected $facebook_access_token;
+    protected $facebookAccessToken;
 
     /**
      * @Expose
@@ -110,7 +110,7 @@ class User extends BaseUser implements UserInterface
      */
     public function setFacebookAccessToken($facebookAccessToken)
     {
-        $this->facebook_access_token = $facebookAccessToken;
+        $this->facebookAccessToken = $facebookAccessToken;
 
         return $this;
     }
@@ -122,7 +122,7 @@ class User extends BaseUser implements UserInterface
      */
     public function getFacebookAccessToken()
     {
-        return $this->facebook_access_token;
+        return $this->facebookAccessToken;
     }
 
 
