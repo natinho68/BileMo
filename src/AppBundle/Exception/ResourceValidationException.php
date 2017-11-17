@@ -4,4 +4,5 @@ namespace AppBundle\Exception;
 
 class ResourceValidationException extends \Exception
 {
+
 }

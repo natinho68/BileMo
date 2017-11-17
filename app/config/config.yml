@@ -89,7 +89,7 @@ fos_rest:
     exception:
         enabled: true
         codes:
-           { AppBundle\Exception\ResourceValidationException: 400, \Exception: 500 }
+           { AppBundle\Exception\ResourceValidationException: 400, \Exception: 500, \Exception: 404}
         messages:
            { AppBundle\Exception\ResourceValidationException: true}
     versioning:

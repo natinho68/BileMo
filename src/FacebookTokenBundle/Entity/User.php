@@ -4,6 +4,7 @@ namespace FacebookTokenBundle\Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use JMS\Serializer\Annotation\Expose;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Groups;
@@ -16,8 +17,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  *
  * @ORM\Entity
- * @ORM\Table(name="fos_user")
-
+ * @ORM\Table(name="user")
+ *
  */
 class User extends BaseUser implements UserInterface
 {
@@ -59,6 +60,23 @@ class User extends BaseUser implements UserInterface
      * @ORM\Column(name="link", type="string", length=255, nullable=true) */
     protected $link;
 
+    /**
+     * @Assert\Email()
+     * @Assert\NotNull()
+     * @Assert\NotBlank()*/
+    protected $email;
+
+    /**
+     * @Assert\NotNull()
+     * @Assert\NotBlank()
+     */
+    protected $password;
+
+    /**
+     * @Assert\NotNull()
+     * @Assert\NotBlank()
+     */
+    protected $username;
 
     /**
      * Set facebookID

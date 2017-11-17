@@ -100,8 +100,16 @@ class UserController extends FOSRestController
      *
      * )
      */
-    public function createAction(User $user)
+    public function createAction(User $user, ConstraintViolationList $violations)
     {
+        if (count($violations)) {
+            $message = 'The JSON sent contains invalid data. Here are the errors you need to correct: ';
+            foreach ($violations as $violation) {
+                $message .= sprintf("Field %s: %s ", $violation->getPropertyPath(), $violation->getMessage());
+            }
+
+            throw new ResourceValidationException($message);
+        }
 
         $em = $this->getDoctrine()->getManager();
         $user->setEnabled(true);
