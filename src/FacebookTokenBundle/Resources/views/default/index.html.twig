@@ -1,19 +1,23 @@
 {% extends 'FacebookTokenBundle::base.html.twig' %}
 
 {% block body %}
-    <main role="main" class="container">
-
         <div class="starter-template">
-            <h1>BileMo FrontApp</h1>
+
 
             {% if app.user.facebookAccessToken is defined %}
-                <p>Your access token is :</p>
-                <p>{{ (app.user.facebookAccessToken) }}</p>
+                <div>
+                    <p>Authenticated with <i class="fa fa-facebook-official fa-2x"></i> as <b>{{ app.user.firstName }} {{ app.user.lastName }}</b> <img src="{{ app.user.picture }}" /></p>
+                </div><br>
+            <div class="alert alert-success" role="alert">
+                    <p>Your access token is :</p>
+                <pre class="pre-scrollable"><code>{{ (app.user.facebookAccessToken) }}</code></pre>
+            </div>
             {% else %}
-            <p class="lead">Please, click on <a href="{{ hwi_oauth_login_url('facebook') }}"><b>Get my API access token</b></a>, to get a token for all your requests on the BileMo API</p>
-            <p><i>You need a Facebook account to get your api token</i></p>
+            <h1>BileMo Access Token App</h1>
+            <div>
+                <p class="lead">Please, click on <a href="{{ hwi_oauth_login_url('facebook') }}"><b>Get my API access token</b></a>, to get a token for all your requests on the BileMo API</p>
+                <p><i>You need a Facebook account to get your api token</i></p>
             {% endif %}
+            </div>
         </div>
-
-    </main><!-- /.container -->
 {% endblock %}
