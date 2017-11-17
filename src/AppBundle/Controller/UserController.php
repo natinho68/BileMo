@@ -113,6 +113,9 @@ class UserController extends FOSRestController
 
         $em = $this->getDoctrine()->getManager();
         $user->setEnabled(true);
+        $password = $user->setPlainPassword($user->getPassword());
+        $salty = $user->setSalt($password);
+        $user->setPassword($salty);
         $em->persist($user);
         $em->flush();
 
