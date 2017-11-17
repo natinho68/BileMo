@@ -56,7 +56,7 @@ class FacebookAuthenticator extends AbstractGuardAuthenticator
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
         $user = $this->em->getRepository('FacebookTokenBundle:User')
-            ->findOneBy(array('facebook_access_token' => $credentials));
+            ->findOneBy(array('facebookAccessToken' => $credentials));
         return $user;
 
     }
