@@ -6,11 +6,18 @@
 
             {% if app.user.facebookAccessToken is defined %}
                 <div>
-                    <p>Authenticated with <i class="fa fa-facebook-official fa-2x"></i> as <b>{{ app.user.firstName }} {{ app.user.lastName }}</b> <img src="{{ app.user.picture }}" /></p>
+                    <p>Authenticated with <i class="fa fa-facebook-official fa-2x"></i> as <b>{{ app.user.firstName }} {{ app.user.lastName }}</b> <img class="rounded" src="{{ app.user.picture }}" /></p>
                 </div><br>
             <div class="alert alert-success" role="alert">
-                    <p>Your access token is :</p>
-                <pre class="pre-scrollable"><code>{{ (app.user.facebookAccessToken) }}</code></pre>
+                <p>Your access token is :</p>
+                <div class="col-12">
+                    <div class="input-group">
+                        <input type="text" id="token" class="form-control" value="{{ (app.user.facebookAccessToken) }}">
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary" id="copy-button" type="button" data-clipboard-target="#token">Copy</button>
+                        </span>
+                    </div>
+                </div>
             </div>
             {% else %}
             <h1>BileMo Access Token App</h1>
@@ -20,4 +27,20 @@
             {% endif %}
             </div>
         </div>
+    {% block javascripts %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js"></script>
+    <script>
+        (function(){
+            var clipboard = new Clipboard('#copy-button');
+            clipboard.on('success', function(event) {
+                event.trigger.textContent = 'Copied !';
+                window.setTimeout(function() {
+                    event.trigger.textContent = 'Copy';
+                }, 2000);
+            });
+        })();
+    </script>
+    {% endblock %}
 {% endblock %}
+
+
