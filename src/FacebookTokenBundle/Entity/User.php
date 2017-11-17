@@ -8,6 +8,7 @@ use JMS\Serializer\Annotation\Expose;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\ExclusionPolicy;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  *
