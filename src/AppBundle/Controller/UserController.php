@@ -82,7 +82,20 @@ class UserController extends FOSRestController
      *     statusCodes={
      *         201="Returned when created",
      *         400="Returned when a violation is raised by validation"
-     *     }
+     *     },
+     *
+     *      parameters={
+     *          {"name"="username", "dataType"="string", "required"=true, "description"="the username"},
+     *          {"name"="password", "dataType"="string", "required"=true, "description"="the user password"},
+     *          {"name"="email", "dataType"="string", "required"=true, "description"="the user email"},
+     *          {"name"="email", "dataType"="string", "required"=true, "description"="the user email"},
+     *          {"name"="facebook_id", "dataType"="string", "required"=false, "description"="the user facebook id"},
+     *          {"name"="first_name", "dataType"="string", "required"=false, "description"="the user firstname"},
+     *          {"name"="last_name", "dataType"="string", "required"=false, "description"="the user lastname"},
+     *          {"name"="picture", "dataType"="string", "required"=false, "description"="the user facebook profile picture"},
+     *          {"name"="link", "dataType"="string", "required"=false, "description"="the user facebook profile link"}
+     *
+     *      }
      *
      *
      * )
