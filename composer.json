@@ -1,5 +1,6 @@
 {
     "name": "nathanmeyer/bilemo",
+    "description": "A products provider with API REST for a mobile phone e-commerce",
     "license": "proprietary",
     "type": "project",
     "autoload": {
