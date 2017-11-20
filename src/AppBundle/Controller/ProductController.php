@@ -2,12 +2,16 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Exception\ResourceValidationException404;
+use Http\Client\Common\Exception\HttpClientNotFoundException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\View;
 use Nelmio\ApiDocBundle\Annotation as Doc;
+use AppBundle\Exception\ResourceValidationException;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Product;
+use Symfony\Component\Debug\ErrorHandler;
 
 class ProductController extends Controller
 {
