@@ -8,6 +8,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use JMS\Serializer\Annotation\Expose;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\Exclude;
 use JMS\Serializer\Annotation\ExclusionPolicy;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -79,6 +80,7 @@ class User extends BaseUser implements UserInterface
 
     /**
      * @Groups({"create"})
+     * @Exclude
      * @Assert\NotNull()
      * @Assert\NotBlank()
      */
