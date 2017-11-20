@@ -2,9 +2,7 @@
 
 {% block body %}
         <div class="starter-template">
-
-
-            {% if app.user.facebookAccessToken is defined %}
+            {% if is_granted('ROLE_USER') and  app.user.facebookAccessToken is not null %}
                 <div>
                     <p>Authenticated with <i class="fa fa-facebook-official fa-2x"></i> as <b>{{ app.user.firstName }} {{ app.user.lastName }}</b> <img class="rounded" src="{{ app.user.picture }}" /></p>
                 </div><br>
@@ -24,9 +22,17 @@
             <div>
                 <p class="lead">Please, click on <a href="{{ hwi_oauth_login_url('facebook') }}"><b>Get my API access token</b></a>, to get a token for all your requests on the BileMo API</p>
                 <p><i>You need a Facebook account to get your api token</i></p>
-            {% endif %}
+            </div>
+            <div class="alert alert-warning" role="alert" style="margin-top:100px;">
+                <h4 class="alert-heading">Users created with the BileMo API</h4>
+                <p>If someone has created a user account for you, <a href="{{ path('fos_user_security_login') }}">please login</a>, and connect your facebook account to use the BileMo API</p>
+                <hr>
+                <p class="mb-0">After logging in, click on "Get my API access token" to connect to your Facebook account.<br>
+                    Once your account is connected with Facebook, you will no longer need to log in via the form, just click on "Get my API access token" and you will log in automatically!</p>
             </div>
         </div>
+    {% endif %}
+
     {% block javascripts %}
     <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js"></script>
     <script>

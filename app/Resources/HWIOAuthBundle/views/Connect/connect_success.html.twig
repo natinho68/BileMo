@@ -1,7 +1,37 @@
 {% extends 'HWIOAuthBundle::layout.html.twig' %}
 
 {% block hwi_oauth_content %}
-    <h3>{{ 'header.success' | trans({'%name%': userInformation.realName}, 'HWIOAuthBundle') }}</h3>
-    <p>Your access token is : <br> {{ (app.user.facebookAccessToken) }}</p>
+<div class="starter-template">
+{% if is_granted('ROLE_USER') and  app.user.facebookAccessToken is not null %}
+<div>
+    <p>Authenticated with <i class="fa fa-facebook-official fa-2x"></i> as <b>{{ app.user.firstName }} {{ app.user.lastName }}</b> <img class="rounded" src="{{ app.user.picture }}" /></p>
+</div><br>
+<div class="alert alert-success" role="alert">
+    <p>Your access token is :</p>
+    <div class="col-12">
+        <div class="input-group">
+            <input type="text" id="token" class="form-control" value="{{ (app.user.facebookAccessToken) }}">
+            <span class="input-group-btn">
+                            <button class="btn btn-secondary" id="copy-button" type="button" data-clipboard-target="#token">Copy</button>
+                        </span>
+        </div>
+    </div>
+</div>
+</div>
+{% endif %}
+    {% block javascripts %}
+        <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js"></script>
+        <script>
+            (function(){
+                var clipboard = new Clipboard('#copy-button');
+                clipboard.on('success', function(event) {
+                    event.trigger.textContent = 'Copied !';
+                    window.setTimeout(function() {
+                        event.trigger.textContent = 'Copy';
+                    }, 2000);
+                });
+            })();
+        </script>
+    {% endblock %}
 
 {% endblock hwi_oauth_content %}

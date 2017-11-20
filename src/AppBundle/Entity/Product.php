@@ -74,6 +74,16 @@ class Product
     /**
      * @var string
      *
+     * @ORM\Column(name="capacity", type="string", length=255,)
+     *
+     * @Serializer\Since("1.0")
+     */
+    private $capacity;
+
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="description", type="text")
      *
      * @Serializer\Since("1.0")
@@ -110,11 +120,11 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="technical_sheet", type="text")
+     * @ORM\Column(name="technical_spec", type="text")
      *
      * @Serializer\Since("1.0")
      */
-    private $technicalSheet;
+    private $technicalSpec;
 
     /**
      * @var string
@@ -281,29 +291,6 @@ class Product
         return $this->color;
     }
 
-    /**
-     * Set technicalSheet
-     *
-     * @param string $technicalSheet
-     *
-     * @return Product
-     */
-    public function setTechnicalSheet($technicalSheet)
-    {
-        $this->technicalSheet = $technicalSheet;
-
-        return $this;
-    }
-
-    /**
-     * Get technicalSheet
-     *
-     * @return string
-     */
-    public function getTechnicalSheet()
-    {
-        return $this->technicalSheet;
-    }
 
     /**
      * Set brand
@@ -327,5 +314,53 @@ class Product
     public function getBrand()
     {
         return $this->brand;
+    }
+
+    /**
+     * Set capacity
+     *
+     * @param string $capacity
+     *
+     * @return Product
+     */
+    public function setCapacity($capacity)
+    {
+        $this->capacity = $capacity;
+
+        return $this;
+    }
+
+    /**
+     * Get capacity
+     *
+     * @return string
+     */
+    public function getCapacity()
+    {
+        return $this->capacity;
+    }
+
+    /**
+     * Set technicalSpec
+     *
+     * @param string $technicalSpec
+     *
+     * @return Product
+     */
+    public function setTechnicalSpec($technicalSpec)
+    {
+        $this->technicalSpec = $technicalSpec;
+
+        return $this;
+    }
+
+    /**
+     * Get technicalSpec
+     *
+     * @return string
+     */
+    public function getTechnicalSpec()
+    {
+        return $this->technicalSpec;
     }
 }
