@@ -36,7 +36,9 @@ class User extends BaseUser implements UserInterface
      */
     protected $facebookID;
 
-    /** @ORM\Column(name="facebook_access_token", type="text", nullable=true) */
+    /**
+     * @ORM\Column(name="facebook_access_token", type="text", nullable=true)
+     */
     protected $facebookAccessToken;
 
     /**
@@ -67,7 +69,7 @@ class User extends BaseUser implements UserInterface
 
     /**
      * @Groups({"create", "list"})
-     * @Expose
+     *
      * @Assert\Email()
      * @Assert\NotNull()
      * @Assert\NotBlank()*/

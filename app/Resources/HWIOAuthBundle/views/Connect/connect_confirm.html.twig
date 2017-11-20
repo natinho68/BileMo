@@ -4,7 +4,9 @@
     <h3>{{ 'header.connecting' | trans({}, 'HWIOAuthBundle')}}</h3>
     <div>
         <div>
-            <p>{{ 'connect.confirm.text' | trans({'%service%': service | trans({}, 'HWIOAuthBundle'), '%name%': userInformation.realName}, 'HWIOAuthBundle') }}</p>
+            <p>            {% if userInformation.profilePicture is defined and userInformation.profilePicture is not empty %}
+                    <img src="{{ userInformation.profilePicture }}" />
+                {% endif %}{{ 'connect.confirm.text' | trans({'%service%': service | trans({}, 'HWIOAuthBundle'), '%name%': userInformation.firstName}, 'HWIOAuthBundle') }}</p>
             <p>
                 {{ form_start(form, {'action': path('hwi_oauth_connect_service', {'service': service, 'key': key}), 'attr': {'class': 'fos_user_registration_register'}}) }}
                     {{ form_widget(form) }}
@@ -16,9 +18,6 @@
             </p>
         </div>
         <div>
-            {% if userInformation.profilePicture is defined and userInformation.profilePicture is not empty %}
-                <img src="{{ userInformation.profilePicture }}" />
-            {% endif %}
         </div>
     </div>
 {% endblock hwi_oauth_content %}
