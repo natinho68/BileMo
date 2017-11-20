@@ -124,13 +124,7 @@ class UserController extends FOSRestController
         $em->persist($user);
         $em->flush();
 
-        return $this->view(
-            $user,
-            Response::HTTP_CREATED,
-            [
-                'Location' => $this->generateUrl('app_user_show', ['id' => $user->getId(), UrlGeneratorInterface::ABSOLUTE_URL])
-            ]
-        );
+        return $this->redirect($this->generateUrl('app_user_show', ['id' => $user->getId(), UrlGeneratorInterface::ABSOLUTE_URL]));
     }
 
     /**
