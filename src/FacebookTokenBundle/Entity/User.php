@@ -25,6 +25,8 @@ class User extends BaseUser implements UserInterface
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
+     * @Groups({"list"})
+     * @Expose
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
