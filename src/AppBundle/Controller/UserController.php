@@ -3,7 +3,10 @@
 namespace AppBundle\Controller;
 
 use FOS\RestBundle\Controller\FOSRestController;
+use JMS\Serializer\SerializationContext;
+use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use Http\Client\Common\Exception\HttpClientNotFoundException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use Nelmio\ApiDocBundle\Annotation as Doc;
@@ -21,7 +24,7 @@ class UserController extends FOSRestController
      *     name = "app_user_show",
      *     requirements = {"id"="\d+"}
      * )
-     * @Rest\View
+     * @View(serializerGroups={"list"})
      *
      * @Doc\ApiDoc(
      *     section="Users",
@@ -62,9 +65,10 @@ class UserController extends FOSRestController
      *     path = "/api/users",
      *     name = "app_user_create"
      * )
-     * @Rest\View(StatusCode=201)
-     * @ParamConverter("user", converter="fos_rest.request_body")
      *
+     * @View(serializerGroups={"create"})
+     *
+     * @ParamConverter("user", converter="fos_rest.request_body")
      *
      *     @Doc\ApiDoc(
      *     section="Users",
@@ -134,7 +138,8 @@ class UserController extends FOSRestController
      *     path = "/api/users/",
      *     name = "app_user_list"
      * )
-     * @Rest\View
+     *
+     * @View(serializerGroups={"list"})
      *
      * @Doc\ApiDoc(
      *     section="Users",
