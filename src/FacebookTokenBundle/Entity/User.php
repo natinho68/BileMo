@@ -15,7 +15,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ExclusionPolicy("all")
  *
- *
+ * @UniqueEntity("username", message = "This username already exists, please choose another one.")
+ * @UniqueEntity("email", message = "This email address already exists, please choose another one.")
  * @ORM\Entity
  * @ORM\Table(name="user")
  */
@@ -30,6 +31,7 @@ class User extends BaseUser implements UserInterface
 
     /**
      * @Expose
+     * @Groups({"create", "list"})
      * @ORM\Column(name="facebook_id",type="text",  nullable=true)
      */
     protected $facebookID;
@@ -39,6 +41,7 @@ class User extends BaseUser implements UserInterface
 
     /**
      * @Expose
+     * @Groups({"create", "list"})
      * @ORM\Column(name="first_name", type="string", length=255, nullable=true)
      *
      */
@@ -46,32 +49,40 @@ class User extends BaseUser implements UserInterface
 
     /**
      * @Expose
+     * @Groups({"create", "list"})
      * @ORM\Column(name="last_name", type="string", length=255, nullable=true) */
     protected $lastName;
 
     /**
      * @Expose
+     * @Groups({"create", "list"})
      * @ORM\Column(name="picture", type="string", length=255, nullable=true) */
     protected $picture;
 
     /**
      * @Expose
+     * @Groups({"create", "list"})
      * @ORM\Column(name="link", type="string", length=255, nullable=true) */
     protected $link;
 
     /**
+     * @Groups({"create", "list"})
+     * @Expose
      * @Assert\Email()
      * @Assert\NotNull()
      * @Assert\NotBlank()*/
     protected $email;
 
     /**
+     * @Groups({"create"})
      * @Assert\NotNull()
      * @Assert\NotBlank()
      */
     protected $password;
 
     /**
+     * @Groups({"create", "list"})
+     * @Expose
      * @Assert\NotNull()
      * @Assert\NotBlank()
      */
