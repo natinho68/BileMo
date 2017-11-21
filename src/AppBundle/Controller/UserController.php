@@ -66,7 +66,10 @@ class UserController extends FOSRestController
      *     name = "app_user_create"
      * )
      *
-     * @View(serializerGroups={"create"})
+     * @View(
+     *     statusCode=201,
+     *      serializerGroups={"create"}
+     *)
      *
      * @ParamConverter("user", converter="fos_rest.request_body")
      *
@@ -124,7 +127,7 @@ class UserController extends FOSRestController
         $em->persist($user);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('app_user_show', ['id' => $user->getId(), UrlGeneratorInterface::ABSOLUTE_URL]));
+        return $user;
     }
 
     /**
