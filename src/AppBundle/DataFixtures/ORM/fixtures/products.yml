@@ -1,56 +1,317 @@
 Product:
-    iPhone 6 Silver 64Go:
-        name: iPhone 6 Silver 64Go
+    iPhone 6 Silver:
+        name: iPhone 6 Space grey
         price: 280
-        description: 4G + (up to 223 Mbps) and 4G (up to 100 Mbps or 150Mbps) compatible
-                     4.7 inch Retina HD screen with 3D Touch
-                     A9 chip with M9 motion coprocessor
-                     12 megapixel iSight camera. 4K videos. Live Photos.
+        description: Bigger than big
         quantity: 100
-        color: Silver
-        os: iOS 11
-        technical_spec: Dimensions and weight
-                        Dimensions (closed) 138.3 mm, 67.1 mm, 7.1 mm
-                        Autonomy
-                        Talk time 14 hours
-                        Li-ion battery type
-                        Standby time 240 h
-                        Networks and connectivity
-                        Networks 1800,1900,850,900, 3G +, Edge, H +, 4G, 3G
-                        Other Bluetooth, Wifi connections
-                        DAS 0.87 W / Kg
-                        OS, memory and applications
-                        type of OS (operating system) iOS
-                        IOS 9 OS version
-                        Processor (frequency in Mhz) A9
-                        64GB memory capacity
-                        Calls and messaging
-                        Voice commands yes
-                        Keyboard type Azerty tacile keyboard
-                        sms yes
-                        mMS yes
-                        emails yes
-                        attachment management yes
-                        Screen
-                        touch yes
-                        Photo
-                        Camera yes
-                        Maximum image capture resolution 12 megapixels
-                        Flash (flash technology) yes, TRUE TONE
-                        Digital zoom yes
-                        Optical zoom no
-                        Autofocus yes
-                        Supported image formats TIFF, gif, jpg
-                        number of camera 2
-                        5 Megapixel Secondary Camera Resolution
-                        Audio and video
-                        Supported audio formats AAC, AAC protected, AAX +, AAx, AIFF, Apple Lossless, Audible enhanced, HE AAC v2, MP3, MP3 VBR, WAV
-                        FM radio no
-                        Video player yes
-                        Video recorder yes
-                        Maximum video capture resolution 3840 * 2160
-                        Video output no
-        capacity: 64Go
+        color: Space grey
+        os: iOS
+        technical_spec: 4G compatible (up to 150 Mbit / s), H + (up to 42 Mbit / s)
+                        4.7 Inch Retina HD Screen
+                        Chips A8 - M8
+                        New iSight 8 megapixel camera with Focus Pixels
+        capacity: 64GB
         brand: Apple
 
+    Galaxy S7 Silver:
+        name: Galaxy S7 Silver
+        price: 529
+        description: Push back the limits of the smartphone.
+                     Let yourself be seduced by the sophistication of the design of the Galaxy S7! A real jewel box set with glass, its curved back has been worked to allow easy and comfortable handling. His metal strapping is also a success. Certified IP68, your smartphone is more waterproof.
+        quantity: 130
+        color: Silver
+        os: Android
+        technical_spec: 4G + compatible (speeds up to 223 Mbit / s or 300 Mbit / s depending on coverage)
+                        5.1 inch Super AMOLED Quad HD display
+                        Octo Core 2.3 GHz processor
+                        32GB memory expandable up to 200GB (micro SD not included)
+        capacity: 32GB expandable up to 200GB (SD card not included)
+        brand: Samsung
+
+
+    Xperia XZ1 blue gray:
+        name: Xperia XZ1 blue gray
+        price: 599
+        description: And everything becomes extra-ordinary.
+                     The Sony Xperia XZ1 a mobile in time with outstanding photographic performance.
+        quantity: 110
+        color: Blue gray
+        os: Android
+        technical_spec: 5.2 inch full HD screen
+                        Android 8.0
+                        19 and 13 megapixel photo sensors
+                        64 GB of internal storage
+        capacity: 64GB
+        brand: Sony
+
+    P10 black:
+        name: P10 black
+        price: 549
+        description: Huawei P10 a real photo studio in your hands.
+                     Enjoy the Huawei P10, your mobile photo studio.
+        quantity: 160
+        color: Black
+        os: Android
+        technical_spec: Double photo sensor black and white in 20 Mpxls and color of 12 Mpxls
+                        Long-lasting battery life with a 3200 mAh battery
+                        Leica lenses integrated in the main camera and the front camera of 8 Mpxls
+                        Premium and fashion design
+        capacity: 64GB
+        brand: Huawei
+
+    Nokia 8 grey:
+        name: Nokia 8 grey
+        price: 599
+        description: You like selfies, you'll love Bothies.
+                     The Nokia 8 is a great success your photos and videos will be successful.
+                     Its autonomy is appreciable and its design very neat.
+        quantity: 100
+        color: Grey
+        os: Android
+        technical_spec: 5.3 inch QHD screen
+                        Android 7.1
+                        13 megapixel photo sensor
+                        64GB of internal storage
+        capacity: 64GB
+        brand: Nokia
+
+    Motorcycle Z2 Play lunar gray:
+        name: Motorcycle Z2 Play lunar gray
+        price: 449
+        description: Motorola moto Z² Play unlimited possibilities.
+                     Discover the second generation Z² Play bike. Even thinner, lighter and faster, it transforms with a simple gesture thanks to Moto Mods.
+        quantity: 115
+        color: Lunar gray
+        os: Android
+        technical_spec: 5.5 inch Super AMOLED Full HD display
+                        Android 7.1
+                        12 Mpxls and front 5 Mpxls photo sensor
+                        64GB memory expandable to 2TB
+        capacity: 64GB
+        brand: Motorola
+
+    U11 grey:
+        name: U11 grey
+        price: 759
+        description: HTC U11, the photo excellence in your hands.
+                     The HTC U11 is one of the best HTC products. It is a powerful mobile with an elegant design, a large screen very bright and with 2 very good cameras.
+        quantity: 125
+        color: Grey
+        os: Android
+        technical_spec: 5.5 inch super LCD screen 5
+                        Main picture sensor 12 Mpxls and front panel 16 Mpxls
+                        IP67 certification against dust and water
+                        64GB memory expandable to 2TB
+        capacity: 64GB
+        brand: HTC
+
+    KEYone grey:
+        name: KEYone grey
+        price: 599
+        description: Check out the BlackBerry KEYone, the smartphone that will delight physical keyboard fans and the BlackBerry brand.
+                     Enjoy the BlackBerry KEYone, the perfect combination of touch screen and physical keyboard.
+        quantity: 90
+        color: Grey
+        os: Android
+        technical_spec: 12 megapixel back camera and 8 megapixel front camera
+                        4.5" screen + physical keyboard with HD resolution (1080x1620)
+                        3505 mAh battery
+                        Processor Qualcomm 8953 Octa-Core 2 GHz
+        capacity: 32GB
+        brand: BlackBerry
+
+    G6 platinum blue:
+        name: G6 platinum blue
+        price: 649
+        description: LG G6, a harmoniously designed smartphone with a sleek construction.
+                     A large immersive screen in a small format.
+        quantity: 90
+        color: Platinum blue
+        os: Android
+        technical_spec: Impressive 5.7 inch display and Quad HD resolution
+                        Dual 13MP rear lens and 5MP front wide-angle front camera
+                        32GB memory expandable up to 2TB
+                        Resistant and reliable with IP 68 certification and Qualcomm processor
+        capacity: 32GB
+        brand: LG
+
+    WIM Lite black:
+        name: WIM Lite black
+        price: 149
+        description: For multimedia uses at a very light price.
+                     Enjoy the Wiko WIM Lite, a very complete smartphone that offers a good multimedia experience at a reasonable price.
+        quantity: 220
+        color: Black
+        os: Android
+        technical_spec: A full-HD 5-inch screen
+                        Android 7.1
+                        13 Mpxls and 16 Mpxls photo sensor
+                        32GB memory expandable to 256GB
+        capacity: 32GB
+        brand: Wiko
+
+    Fairphone 2 indigo blue:
+        name: Fairphone 2 indigo blue
+        price: 525
+        description: The ethical and modular smartphone designed to last
+                     The Fairphone gives you the opportunity to change the rules of the game with an ethical product that matches your values without neglecting that it has everything to meet our daily technological needs.
+        quantity: 140
+        color: Indigo blue
+        os: Android
+        technical_spec: 5 inch HD screen
+                        Android 6.0
+                        12 megapixel and 5 megapixel front camera
+                        32GB memory expandable to 128GB
+        capacity: 32GB expandable up to 128GB
+        brand: Fairphone
+
+    iPhone X Space gray:
+        name: iPhone X Space gray
+        price: 1129
+        description: iPhone X. Say hello to the future.
+                     You have never seen anything like it. He sees only you.
+        quantity: 100
+        color: Space gray
+        os: iOS
+        technical_spec: 5.8 "OLED display designed for iPhone X
+                        Larger and faster 12 MP sensor
+                        Glass and stainless steel design
+                        Face ID for secure authentication and Apple Pay
+        capacity: 64GB
+        brand: Apple
+
+    Trekker X3 black:
+        name: Trekker X3 black
+        price: 549
+        description: CrossCall Trekker X3, the perfect companion for your adventures.
+                     The CrossCall Trekker X3, a 4G phone designed for outdoor trips and explorations.
+        quantity: 130
+        color: Black
+        os: Android
+        technical_spec: Ultra-resistant design and reinforced glass screen
+                        Sensors and resistance to water and dust (IP67)
+                        3500 mAh battery compatible fast charge and induction
+                        16 megapixel main camera
+        capacity: 32GB
+        brand: Crosscall
+
+    Galaxy A5 2017 black:
+        name: Galaxy A5 2017 black
+        price: 349
+        description: Bluffing selfies with increased autonomy
+                     Enjoy the Samsung Galaxy A5 2017, a smartphone, which combines glass and metal with elegance, and discover its breathtaking photo quality and extraordinary autonomy
+        quantity: 160
+        color: Black
+        os: Android
+        technical_spec: 5.2 "Super AMOLED display for an elegant combination of glass and metal
+                        Two 16 megapixel camera sensors
+                        Extraordinary autonomy with its 3000 mAh battery
+                        IP68 certified water resistance
+        capacity: 32GB
+        brand: Samsung
+
+    Xperia X Compact black:
+        name: Xperia X Compact black
+        price: 379
+        description: Exceptional photos in a compact format
+                     Discover the high-end smartphone Sony that brings together the best technology in a compact format. His camera with triple sensors will not leave indifferent photographers
+        quantity: 140
+        color: Black
+        os: Android
+        technical_spec: 4G + compatible (up to 223 Mbps)
+                        23 megapixel camera and 5 megapixel front camera
+                        4.6 inch TFT screen
+                        32GB memory expandable up to 200GB (micro SD card not included)
+        capacity: 32GB memory expandable to 200GB
+        brand: Sony
+
+    G5 titanium:
+        name: G5 titanium
+        price: 599
+        description: Discover the LG G5 smartphone and its elegant design with its metallic finish.
+                     The LG G5 is a brand new type of smartphone both elegant and out of the ordinary. It has a smooth, metallic finish, a perfect blend of metal and glass.
+        quantity: 110
+        color: Black
+        os: Android
+        technical_spec: 4G + compatible (up to 223 Mbps)
+                        16 MP camera + Wide angle + 8 megapixel front camera
+                        5.3 inch Quad HD screen
+                        2.1 GHz QuadCore processor
+        capacity: 32GB
+        brand: LG
+
+    Galaxy S8 Powder Pink:
+        name: Galaxy S8 Powder Pink
+        price: 809
+        description: Samsung Galaxy S8, unbox your phone.
+                     Discover the new Samsung Galaxy S8 with its slim, rounded, waterproof and borderless design.
+        quantity: 140
+        color: Powder Pink
+        os: Android
+        technical_spec: 4G + compatible (speeds up to 223 Mbit / s or 300 Mbit / s depending on coverage)
+                        Dual Pixel 12 Mpxls camera + 8 Mpxls in front
+                        64GB of storage + microSD port (256GB)
+                        AKG headphones included
+        capacity: 64GB expandable to 256GB
+        brand: Samsung
+
+    Xperia XZ Premium black:
+        name: Xperia XZ Premium black
+        price: 799
+        description: Sony Xperia ™ XZ Premium
+                     And everything becomes extraH!
+                     Discover the Sony Xperia ™ XZ Premium, a condensed technology for incredible experiences.
+        quantity: 120
+        color: Black
+        os: Android
+        technical_spec: World-unique 5.5 "4K HDR display
+                        19 Mpxls Motion Eye Camera and 13 Mpxls
+                        IP 68 and glass Corning Gorilla Glass 5 front and rear
+                        Top performance with its latest generation processor the Snapdragon 835
+        capacity: 64GB
+        brand: Sony
+
+    Mate 9 gray:
+        name: Mate 9 gray
+        price: 599
+        description: To see things big
+                     Discover Huawei's new premium phablet to beautify your content and take stunning shots
+        quantity: 150
+        color: Gray
+        os: Android
+        technical_spec: 4G + compatible
+                        Large 5.9-inch LTPS screen
+                        Dual lens designed with Leica of 20 megapixels and 12 megapixels
+                        4000mAh long life battery
+        capacity: 64GB expandable to 256GB
+        brand: Huawei
+
+    iPhone 7 RED:
+        name: iPhone 7 RED
+        price: 729
+        description: Customers Can Now Purchase iPhone in a Beautiful New Finish and Contribute to the Global Fund to Fight AIDS
+        quantity: 110
+        color: Red
+        os: iOS
+        technical_spec: 4G + compatible (speeds up to 223 Mbit / s or 300 Mbit / s depending on coverage)
+                        4.7 inch Retina HD display with IPS technology
+                        A10 chip with M10 motion coprocessor
+                        12 megapixel camera, 4K video at 30 fps
+        capacity: 128GB
+        brand: Apple
+
+    A5 LED black:
+        name: A5 LED black
+        price: 729
+        description: Alcatel A5 LED black a customizable mobile with its applications and hulls.
+                     Discover the new Alcatel A5 LED with its customizable design.
+        quantity: 190
+        color: black
+        os: Android
+        technical_spec: 8 MP front camera and 5 MP front camera
+                        Long-lasting battery life with 2800 mAh battery
+                        5.2 "screen and HD resolution
+                        Supplied with an interactive LED shell
+        capacity: 16GB
+        brand: Alcatel
 
