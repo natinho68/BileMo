@@ -27,6 +27,7 @@ class LoadDatas extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $createDB = $this->getApplication()->find('doctrine:database:create');
         $loadingSchema = $this->getApplication()->find('doctrine:schema:update');
         $args = array(
             'command' => 'doctrine:schema:update',
@@ -34,6 +35,7 @@ class LoadDatas extends ContainerAwareCommand
         );
 
         $commandInput = new ArrayInput($args);
+        $createDB->run($input, $output);
         $loadingSchema->run($commandInput, $output);
         $loadingDatas = $this->getContainer()->get('app_bundle.command');
         $loadingDatas->loadProducts();
