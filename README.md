@@ -38,6 +38,8 @@ parameters:
 ```
 * Install the database structure and datas with ``` php bin/console app:load-datas ```
 
+* You can access the API documentation at: ``` yourdomain.domain/doc ```
+
 * Enjoy
 
 ## Built With
