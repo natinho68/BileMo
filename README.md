@@ -49,9 +49,9 @@ parameters:
 * [jQuery](https://rometools.github.io/rome/) - Used for animations
 * [FOSUserBundle](https://symfony.com/doc/master/bundles/FOSUserBundle/index.html) - Used for users management
 * [FOSRestBundle](https://symfony.com/doc/master/bundles/FOSRestBundle/index.html) - Used for rapidly develop RESTful API's & applications with Symfony
-* [JMSSerializer](https://jmsyst.com/libs/serializer) - Used for (de-)serialize data of any complexity
-* [CSAGuzzleBundle](https://github.com/csarrazi/CsaGuzzleBundle) - Used for perform HTTP requests very simply
-* [NelmioApiDocBundle](https://github.com/nelmio/NelmioApiDocBundle) - Used for generate simply a documentation for APIs
+* [JMSSerializer](https://jmsyst.com/libs/serializer) - Used to (de-)serialize data of any complexity
+* [CSAGuzzleBundle](https://github.com/csarrazi/CsaGuzzleBundle) - Used to perform HTTP requests very simply
+* [NelmioApiDocBundle](https://github.com/nelmio/NelmioApiDocBundle) - Used to generate simply a documentation for APIs
 * [PagerFanta](https://github.com/whiteoctober/Pagerfanta) - Used for pagination
 * [HWIOAuthBundle](https://github.com/hwi/HWIOAuthBundle) - Used for OAuth Facebook integration
 * [BazingaHateoasBundle](https://github.com/willdurand/BazingaHateoasBundle) - Used for Hateoas library integration
