@@ -6,7 +6,7 @@
 !/var/cache
 /var/cache/*
 !var/cache/.gitkeep
-.idea/workspace.xml
+.idea/
 !/var/logs
 /var/logs/*
 !var/logs/.gitkeep
