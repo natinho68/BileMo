@@ -40,7 +40,7 @@
         "symfony/polyfill-apcu": "^1.0",
         "symfony/security-guard": "^3.3",
         "symfony/swiftmailer-bundle": "^2.3.10",
-        "symfony/symfony": "3.3.*",
+        "symfony/symfony": "3.4.*",
         "twig/twig": "^1.0||^2.0",
         "white-october/pagerfanta-bundle": "^1.1",
         "willdurand/hateoas-bundle": "^1.3"
